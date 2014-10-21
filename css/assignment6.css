@@ -1,0 +1,159 @@
+/*                                                                            
+  Name: Virinchi Balabhadrapatruni                                             
+  Email: Virinchi_Balabhadrapatruni@student.uml.edu                            
+  UMass Lowell Computer Science, 91.461 GUI Programming I                      
+  Date: 10/17/2014                                                               
+  Description: CSS File created for Assignment #6.                               
+*/
+
+body {
+    background-color: black;
+    background-image: url('http://www.graphic-design.com/Photoshop/tutorials/rusty_text/steelbackground3.jpg');
+    font-family: 'Ubuntu', cursive;
+    background-position: center;
+}
+
+body div {
+    padding: 15px;
+    margin: 15px;
+    border: 3px solid white;
+    background-color: lightgray;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 25px;
+}
+
+.numeric {
+    margin-bottom: 10px;
+}
+
+.fieldlbl {
+    display: inline;
+    font-weight: normal;
+    padding-right: 5px;
+}
+
+.fieldlbl2 {
+    display: inline;
+    font-weight: normal;
+    padding-right: 25px;
+}
+
+#lbl1 {
+    padding-right: 12px; 
+}
+
+#lbl2 {
+    padding-right: 32px; 
+}
+
+.inputform h4 {
+    margin-left: 10px;
+}
+
+#formoutput_inner {
+    overflow:auto;
+    padding-right: 25px;
+}
+
+#formoutput_inner table {
+    padding-left: 25px;
+    border-collapse: collapse;
+
+}
+
+#formoutput_inner td{
+    border: 2px solid #000;
+    width: 2em;
+}
+
+#formoutput_inner tr {
+    background-color: white;
+    color: #000;
+    width: 2em;
+    text-align: center;
+}
+
+#formoutput_inner tr:nth-of-type(odd) {
+    background-color: lightgray;
+}
+
+#formoutput_inner th {
+    background-color: #000;
+    color: #FFF;
+    font-weight: bold;
+    width: 2em;
+    border: 2px solid #FFF;
+    border-top: 0px;
+    border-left: 0px;
+}
+
+#formoutput_inner #emptyheader {
+    background-color: lightgray;
+    color: #000;
+    font-weight: bold;
+    width: 2em;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+}
+
+#formoutput_inner #rightmostheader {
+    border-right: 0px;
+}
+
+#formoutput_inner #bottommostheader {
+    border-bottom: 0px;
+}
+
+#formoutput_inner {
+    border: 0px;
+}
+
+.numeric:invalid {
+    border: 2px solid red;
+}
+
+.numeric {
+    border: 1px solid gray;
+    height: 20px;
+    padding-left: 5px;
+}
+
+.submit {
+    width: 60px;
+    height: 25px;
+}
+
+#footer footer div{
+    border: 0px;
+}
+
+#footer footer #left {
+    float:left;
+    width:40%;
+}
+
+#footer footer #center {
+    float:left;
+}
+
+#footer footer #right {
+    float:right;
+}
+
+#footer {
+    min-height: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9900FF;
+}
+

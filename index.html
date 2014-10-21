@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  Name: Virinchi Balabhadrapatruni                                             
+  Email: Virinchi_Balabhadrapatruni@student.uml.edu                            
+  UMass Lowell Computer Science, 91.461 GUI Programming I                      
+  Date: 10/17/2014                                                               
+  Description: HTML File created for Assignment #6.   
+-->
+<html>
+    <head>
+        <title>GUI Programming I Assignment #6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
+        <script type="text/javascript" src="js/libs/jqueryui/jquery-ui.js"></script>
+        <link href="css/reset.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/assignment6.css">
+        <script type="text/javascript" src="js/dynamictable.js"></script>
+
+    </head>
+    <body>
+        <div class="inputform">
+            <form action="">
+                <h1>Input Integers for Multiplication Table in the Form Below:</h1>
+                <h4 class="fieldlbl">Enter horizontal start : </h4><input type="text" name="firstInput" class="numeric" size="40"><br>
+                <h4 class="fieldlbl" id="lbl1">Enter horizontal end : </h4><input type="text" name="secondInput" class="numeric" size="40"><br>
+                <h4 class="fieldlbl2">Enter vertical start : </h4><input type="text" name="thirdInput" class="numeric" size="40"><br>
+                <h4 class="fieldlbl2" id="lbl2">Enter vertical end : </h4><input type="text" name="fourthInput" class="numeric" size="40"><br>
+                <input class="submit" type="button" value="Submit" onClick="makeTable(this.form);">
+            </form>
+        </div>
+        <div id="formoutput"></div>
+        <div id="footer">
+            <footer>
+                <div id="left">
+                    <a href="#" onClick='window.location="view-source:" + window.location.href'>View HTML</a>
+                </div>
+                <div id="center">
+                    <a href="css/assignment6.css">View CSS</a>
+                </div>
+                <div id="right">
+                    <a href="js/dynamictable.js">View JavaScript</a>
+                </div>
+            </footer>
+        </div>
+        <!-- 
+            The below script is taken from http://www.dolinaj.net/programming/javascript/jquery-prevent-entering-non-numeric-characters-into-input/ 
+            This script was designed to prevent non-numeric inputs in the input text fields.
+        -->
+        <script>
+            $(".numeric").on('keypress', function (evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode;
+                var validkey = !!(charCode <= 46);
+                validkey = !!(charCode >= 48 && charCode <= 57) || validkey;
+                validkey = !!(charCode >= 96 && charCode <= 105) || validkey;
+                validkey = !!(charCode == 190) || validkey;
+                validkey = !!(charCode == 173) || validkey;
+                return validkey;
+            });
+        </script>
+    </body>
+</html>
