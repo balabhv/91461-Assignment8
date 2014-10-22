@@ -28,14 +28,24 @@ function makeTable(form) {
     valid = !!(c != '') && valid;
     valid = !!(d != null) && valid;
     valid = !!(d != '') && valid;
-    
+
     var areIntegers = !!(a.indexOf('.') == -1);
     areIntegers = !!(b.indexOf('.') == -1) && areIntegers;
     areIntegers = !!(c.indexOf('.') == -1) && areIntegers;
     areIntegers = !!(d.indexOf('.') == -1) && areIntegers;
 
+    var input = document.getElementById('inputform');
+
+    var error = document.getElementsByClassName('error')[0];
+    if (error == null) {
+        error = document.createElement('div');
+        error.setAttribute('class', 'error');
+    }
+    
     if (!valid) {
-        alert("Please Fill In All Required Fields.");
+
+        error.innerHTML = 'Please fill in all required fields.';
+        input.appendChild(error);
         if (a == null || a == '') {
             form.firstInput.setCustomValidity('Invalid');
         }
@@ -49,7 +59,8 @@ function makeTable(form) {
             form.fourthInput.setCustomValidity('Invalid');
         }
     } else if (!areIntegers) {
-        alert("All inputs must be integer values.");
+        error.innerHTML = "All inputs must be integer values.";
+        input.appendChild(error);
         if (!!(a.indexOf('.') > -1)) {
             form.firstInput.setCustomValidity('Not an integer');
         }
@@ -72,7 +83,7 @@ function makeTable(form) {
         var horizEnd = parseInt(form.secondInput.value);
         var vertStart = parseInt(form.thirdInput.value);
         var vertEnd = parseInt(form.fourthInput.value);
-        
+
         console.log('Horizontal Start: ' + horizStart);
         console.log('Horizontal End: ' + horizEnd);
         console.log('Vertical Start: ' + vertStart);
@@ -112,7 +123,10 @@ function makeTable(form) {
             outputWrapper.appendChild(outputDiv);
             outputWrapper.appendChild(document.createElement('br'));
         } else {
-            alert('Invalid input: Start is greater than end.');
+
+            error.innerHTML = 'Invalid input: Start is greater than end.';
+            input.appendChild(error);
+
         }
 
     }
