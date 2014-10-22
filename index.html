@@ -23,7 +23,7 @@
                 $('.numeric').keypress(function (e) {
                     //if the letter is not digit then display error and don't type anything
 
-                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 45 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 45 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57)) {
                         return false;
                     }
                 });
