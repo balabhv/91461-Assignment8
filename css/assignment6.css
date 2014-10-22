@@ -50,7 +50,7 @@ h1 {
     padding-right: 32px; 
 }
 
-.inputform h4 {
+#inputform h4 {
     margin-left: 10px;
 }
 
@@ -155,5 +155,11 @@ a {
 
 a:hover {
     color: #9900FF;
+}
+.error {
+    background-color: lightsalmon;
+    color: #cd0a0a;
+    font-weight: bold;
+    border: 2px solid red;
 }
 

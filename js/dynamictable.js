@@ -34,8 +34,15 @@ function makeTable(form) {
     areIntegers = !!(c.indexOf('.') == -1) && areIntegers;
     areIntegers = !!(d.indexOf('.') == -1) && areIntegers;
 
+    var input = document.getElementById('inputform');
+    input.removeChild(input.childNodes[input.childElementCount-1]);
+    var error = document.createElement('div');
+    error.setAttribute('class', 'error');
+    
     if (!valid) {
-        alert("Please Fill In All Required Fields.");
+        
+        error.innerHTML = 'Please fill in all required fields.';
+        input.appendChild(error);
         if (a == null || a == '') {
             form.firstInput.setCustomValidity('Invalid');
         }
@@ -49,7 +56,8 @@ function makeTable(form) {
             form.fourthInput.setCustomValidity('Invalid');
         }
     } else if (!areIntegers) {
-        alert("All inputs must be integer values.");
+        error.innerHTML = "All inputs must be integer values.";
+        input.appendChild(error);
         if (!!(a.indexOf('.') > -1)) {
             form.firstInput.setCustomValidity('Not an integer');
         }

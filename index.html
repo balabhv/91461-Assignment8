@@ -17,10 +17,21 @@
         <link href="css/reset.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/assignment6.css">
         <script type="text/javascript" src="js/dynamictable.js"></script>
+        <script>
+            $(document).ready(function () {
+                //called when key is pressed in textbox
+                $('.numeric').keypress(function (e) {
+                    //if the letter is not digit then display error and don't type anything
 
+                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 173 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+                        return false;
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-        <div class="inputform">
+        <div id="inputform">
             <form action="">
                 <h1>Input Integers for Multiplication Table in the Form Below:</h1>
                 <h4 class="fieldlbl">Enter horizontal start : </h4><input type="text" name="firstInput" class="numeric" size="40"><br>
@@ -44,18 +55,5 @@
                 </div>
             </footer>
         </div>
-
-        <script>
-            $(document).ready(function () {
-                //called when key is pressed in textbox
-                $('.numeric').keypress(function (e) {
-                    //if the letter is not digit then display error and don't type anything
-
-                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 173 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
-                        return false;
-                    }
-                });
-            });
-        </script>
     </body>
 </html>
