@@ -23,7 +23,7 @@
                 $('.numeric').keypress(function (e) {
                     //if the letter is not digit then display error and don't type anything
 
-                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 173 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 45 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
                         return false;
                     }
                 });
@@ -40,6 +40,7 @@
                 <h4 class="fieldlbl2" id="lbl2">Enter vertical end : </h4><input type="text" name="fourthInput" class="numeric" size="40"><br>
                 <input class="submit" type="button" value="Submit" onClick="makeTable(this.form);">
             </form>
+            <div id="errordiv"></div>
         </div>
         <div id="formoutput"></div>
         <div id="footer">

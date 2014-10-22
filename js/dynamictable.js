@@ -34,14 +34,17 @@ function makeTable(form) {
     areIntegers = !!(c.indexOf('.') == -1) && areIntegers;
     areIntegers = !!(d.indexOf('.') == -1) && areIntegers;
 
-    var input = document.getElementById('inputform');
+    var input = document.getElementById('errordiv');
 
     var error = document.getElementsByClassName('error')[0];
-    if (error == null) {
-        error = document.createElement('div');
-        error.setAttribute('class', 'error');
+    while (input.firstChild) {
+        input.removeChild(input.firstChild);
     }
-    
+    error = document.createElement('div');
+    error.setAttribute('class', 'error');
+
+
+
     if (!valid) {
 
         error.innerHTML = 'Please fill in all required fields.';
@@ -123,7 +126,6 @@ function makeTable(form) {
             outputWrapper.appendChild(outputDiv);
             outputWrapper.appendChild(document.createElement('br'));
         } else {
-
             error.innerHTML = 'Invalid input: Start is greater than end.';
             input.appendChild(error);
 
