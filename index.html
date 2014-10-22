@@ -34,7 +34,7 @@
         <div id="footer">
             <footer>
                 <div id="left">
-                    <a href="#" onClick='window.location="view-source:" + window.location.href'>View HTML</a>
+                    <a href="#" onClick='window.location = "view-source:" + window.location.href'>View HTML</a>
                 </div>
                 <div id="center">
                     <a href="css/assignment6.css">View CSS</a>
@@ -44,19 +44,17 @@
                 </div>
             </footer>
         </div>
-        <!-- 
-            The below script is taken from http://www.dolinaj.net/programming/javascript/jquery-prevent-entering-non-numeric-characters-into-input/ 
-            This script was designed to prevent non-numeric inputs in the input text fields.
-        -->
+
         <script>
-            $(".numeric").on('keypress', function (evt) {
-                var charCode = (evt.which) ? evt.which : event.keyCode;
-                var validkey = !!(charCode <= 46);
-                validkey = !!(charCode >= 48 && charCode <= 57) || validkey;
-                validkey = !!(charCode >= 96 && charCode <= 105) || validkey;
-                validkey = !!(charCode == 190) || validkey;
-                validkey = !!(charCode == 173) || validkey;
-                return validkey;
+            $(document).ready(function () {
+                //called when key is pressed in textbox
+                $('.numeric').keypress(function (e) {
+                    //if the letter is not digit then display error and don't type anything
+
+                    if (e.which != 8 && e.which != 0 && e.which != 110 && e.which != 46 && e.which != 173 && (e.which < 35 || e.which > 40) && (e.which < 48 || e.which > 57) && (e.which < 96 || e.which > 105)) {
+                        return false;
+                    }
+                });
             });
         </script>
     </body>
