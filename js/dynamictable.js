@@ -34,15 +34,14 @@ function makeTable(form) {
     areIntegers = !!(c.indexOf('.') == -1) && areIntegers;
     areIntegers = !!(d.indexOf('.') == -1) && areIntegers;
 
-    var input = document.getElementById('inputform');
+    var input = document.getElementById('errordiv');
 
     var error = document.getElementsByClassName('error')[0];
-    if (error == null) {
-        error = document.createElement('div');
-        error.setAttribute('class', 'error');
-    } else {
-        input.removeChild(error);
+    while (input.firstChild) {
+        input.removeChild(input.firstChild);
     }
+    error = document.createElement('div');
+    error.setAttribute('class', 'error');
 
 
 
