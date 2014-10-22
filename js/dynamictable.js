@@ -37,13 +37,15 @@ function makeTable(form) {
     var input = document.getElementById('inputform');
 
     var error = document.getElementsByClassName('error')[0];
-    if (error != null) {
+    if (error == null) {
+        error = document.createElement('div');
+        error.setAttribute('class', 'error');
+    } else {
         input.removeChild(error);
     }
-    
-    error = document.createElement('div');
-    error.setAttribute('class', 'error');
-    
+
+
+
     if (!valid) {
 
         error.innerHTML = 'Please fill in all required fields.';
@@ -125,7 +127,6 @@ function makeTable(form) {
             outputWrapper.appendChild(outputDiv);
             outputWrapper.appendChild(document.createElement('br'));
         } else {
-
             error.innerHTML = 'Invalid input: Start is greater than end.';
             input.appendChild(error);
 
