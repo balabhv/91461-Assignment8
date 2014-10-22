@@ -37,10 +37,12 @@ function makeTable(form) {
     var input = document.getElementById('inputform');
 
     var error = document.getElementsByClassName('error')[0];
-    if (error == null) {
-        error = document.createElement('div');
-        error.setAttribute('class', 'error');
+    if (error != null) {
+        input.removeChild(error);
     }
+    
+    error = document.createElement('div');
+    error.setAttribute('class', 'error');
     
     if (!valid) {
 
