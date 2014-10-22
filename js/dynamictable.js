@@ -36,16 +36,12 @@ function makeTable(form) {
 
     var input = document.getElementById('inputform');
 
-    var errors = document.getElementsByClassName('error');
-    errors.forEach(function (error) {
-        input.removeChild(error);
-    });
-
-    var error = document.createElement('div');
-    error.setAttribute('class', 'error');
-
-
-
+    var error = document.getElementsByClassName('error')[0];
+    if (error == null) {
+        error = document.createElement('div');
+        error.setAttribute('class', 'error');
+    }
+    
     if (!valid) {
 
         error.innerHTML = 'Please fill in all required fields.';
@@ -127,36 +123,10 @@ function makeTable(form) {
             outputWrapper.appendChild(outputDiv);
             outputWrapper.appendChild(document.createElement('br'));
         } else {
-            if (isNaN(horizStart) || isNaN(horizEnd) || isNaN(vertStart) || isNaN(vertEnd)) {
-                if (isNaN(horizStart)) {
-                    var error2 = document.createElement('div');
-                    error2.setAttribute('class', 'error');
-                    error2.innerHTML('Invalid input: Horizontal start value is not a number');
-                    input.appendChild(error2);
-                }
-                if (isNaN(horizEnd)) {
-                    var error2 = document.createElement('div');
-                    error2.setAttribute('class', 'error');
-                    error2.innerHTML('Invalid input: Horizontal end value is not a number');
-                    input.appendChild(error2);
-                }
-                if (isNaN(vertStart)) {
-                    var error2 = document.createElement('div');
-                    error2.setAttribute('class', 'error');
-                    error2.innerHTML('Invalid input: Vertical start value is not a number');
-                    input.appendChild(error2);
-                }
-                if (isNaN(vertEnd)) {
-                    var error2 = document.createElement('div');
-                    error2.setAttribute('class', 'error');
-                    error2.innerHTML('Invalid input: Vertical end value is not a number');
-                    input.appendChild(error2);
-                }
-            } else {
-                error.innerHTML = 'Invalid input: Start is greater than end.';
-                input.appendChild(error);
-            }
-            
+
+            error.innerHTML = 'Invalid input: Start is greater than end.';
+            input.appendChild(error);
+
         }
 
     }
