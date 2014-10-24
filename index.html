@@ -37,7 +37,7 @@
         Other, nonprinting characters are the arrow and backspace keys. This function uses ASCII character codes.-->
         <script type="text/javascript">
             $(document).ready(function () {
-                //called when key is pressed in textbox
+                //this is to prevent unwanted characters like alphabert & specials
                 $('.numeric').keypress(function (e) {
 
                     if (e.which != 8 && e.which != 0 && e.which != 46 && e.which != 45 && (e.which < 48 || e.which > 57)) {
@@ -45,6 +45,7 @@
                     }
                 });
 
+                // prevents cut, copy, and paste into the input fields
                 $('.numeric').bind("cut copy paste", function (e) {
                     e.preventDefault();
                 });
