@@ -6,12 +6,15 @@
   Description: CSS File created for Assignment #6.                               
 */
 
+/* Add a background color, background image, and set the page's font. */
 body {
     background-color: black;
     background-image: url('http://www.graphic-design.com/Photoshop/tutorials/rusty_text/steelbackground3.jpg');
     font-family: 'Ubuntu', cursive;
     background-position: center;
 }
+
+/* Format all divs on the page. */
 
 body div {
     padding: 15px;
@@ -21,14 +24,23 @@ body div {
     position: relative;
 }
 
+/* Reapply padding to the title after the CSS reset. */
+
 h1 {
     margin-bottom: 25px;
     font-size: 25px;
 }
 
+/* Format the input fields. */
+
 .numeric {
     margin-bottom: 10px;
+    border: 1px solid gray;
+    height: 20px;
+    padding-left: 5px;
 }
+
+/* Align the left edges of all 4 fields. */
 
 .fieldlbl {
     display: inline;
@@ -50,14 +62,20 @@ h1 {
     padding-right: 32px; 
 }
 
+/* Format the instruction labels of the form. */
+
 #inputform h4 {
     margin-left: 10px;
 }
+
+/* Format the output div */
 
 #formoutput_inner {
     overflow:auto;
     padding-right: 25px;
 }
+
+/* Format the table as a whole. */
 
 #formoutput_inner table {
     padding-left: 25px;
@@ -65,10 +83,14 @@ h1 {
 
 }
 
+/* Format all the elements in the table. */
+
 #formoutput_inner td{
     border: 2px solid #000;
     width: 2em;
 }
+
+/* Format all the rows of the table. */
 
 #formoutput_inner tr {
     background-color: white;
@@ -77,9 +99,13 @@ h1 {
     text-align: center;
 }
 
+/* This makes the table have banded rows. */
+
 #formoutput_inner tr:nth-of-type(odd) {
     background-color: lightgray;
 }
+
+/* Format the headers of the table. */
 
 #formoutput_inner th {
     background-color: #000;
@@ -91,6 +117,8 @@ h1 {
     border-left: 0px;
 }
 
+/* Make the top-left corner of the table be empty to align the column headers with the columns themselves. */
+
 #formoutput_inner #emptyheader {
     background-color: lightgray;
     color: #000;
@@ -101,32 +129,38 @@ h1 {
     border-bottom: 0px;
 }
 
+/* Format the rightmost column header to have no border on the right side. */
+
 #formoutput_inner #rightmostheader {
     border-right: 0px;
 }
+
+/* Format the bottommost row header to have no border on the bottom side. */
 
 #formoutput_inner #bottommostheader {
     border-bottom: 0px;
 }
 
+/* Format the entire output div, as well as the div that contains all error messages. */
+
 #formoutput_inner, #errordiv {
     border: 0px;
 }
+
+/* This changes the border of the input fields to red when the input is invalid. */
 
 .numeric:invalid {
     border: 2px solid red;
 }
 
-.numeric {
-    border: 1px solid gray;
-    height: 20px;
-    padding-left: 5px;
-}
+/* This formats the submit button. */
 
 .submit {
     width: 60px;
     height: 25px;
 }
+
+/* These format the footer. */
 
 #footer footer div{
     border: 0px;
@@ -149,6 +183,8 @@ h1 {
     min-height: 50px;
 }
 
+/* These format links on the page. */
+
 a {
     text-decoration: none;
 }
@@ -156,6 +192,8 @@ a {
 a:hover {
     color: #9900FF;
 }
+
+/* This formats the dynamically created error divs. */
 .error {
     background-color: lightsalmon;
     color: #cd0a0a;
