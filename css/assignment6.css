@@ -75,16 +75,22 @@ h1 {
     padding-right: 25px;
 }
 
+/* Format the table as a whole. */
+
 #formoutput_inner table {
     padding-left: 25px;
     border-collapse: collapse;
 
 }
 
+/* Format all the elements in the table. */
+
 #formoutput_inner td{
     border: 2px solid #000;
     width: 2em;
 }
+
+/* Format all the rows of the table. */
 
 #formoutput_inner tr {
     background-color: white;
@@ -99,6 +105,8 @@ h1 {
     background-color: lightgray;
 }
 
+/* Format the headers of the table. */
+
 #formoutput_inner th {
     background-color: #000;
     color: #FFF;
@@ -108,6 +116,8 @@ h1 {
     border-top: 0px;
     border-left: 0px;
 }
+
+/* Make the top-left corner of the table be empty to align the column headers with the columns themselves. */
 
 #formoutput_inner #emptyheader {
     background-color: lightgray;
@@ -119,13 +129,19 @@ h1 {
     border-bottom: 0px;
 }
 
+/* Format the rightmost column header to have no border on the right side. */
+
 #formoutput_inner #rightmostheader {
     border-right: 0px;
 }
 
+/* Format the bottommost row header to have no border on the bottom side. */
+
 #formoutput_inner #bottommostheader {
     border-bottom: 0px;
 }
+
+/* Format the entire output div, as well as the div that contains all error messages. */
 
 #formoutput_inner, #errordiv {
     border: 0px;
