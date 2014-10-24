@@ -51,7 +51,7 @@ function makeTable(form) {
 
         error.innerHTML = 'Please fill in all required fields.';
         input.appendChild(error);
-        error.fadeOut(100).fadeIn('slow');
+        $(".error").fadeOut(100).fadeIn('slow');
         if (a == null || a == '') {
             form.firstInput.setCustomValidity('Invalid');
         }
@@ -68,7 +68,7 @@ function makeTable(form) {
         // if one or more of the inputs are not integers
         error.innerHTML = "All inputs must be integer values.";
         input.appendChild(error);
-        error.fadeOut(100).fadeIn('slow');
+        $(".error").fadeOut(100).fadeIn('slow');
         if (!!(a.indexOf('.') > -1)) {
             form.firstInput.setCustomValidity('Not an integer');
         }
@@ -155,7 +155,7 @@ function makeTable(form) {
         } else {
             error.innerHTML = 'Invalid input: Start is greater than end.';
             input.appendChild(error);
-            error.fadeOut(100).fadeIn('slow');
+            $(".error").fadeOut(100).fadeIn('slow');
 
         }
 
