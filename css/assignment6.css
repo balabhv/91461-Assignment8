@@ -51,7 +51,7 @@ h1 {
 .fieldlbl2 {
     display: inline;
     font-weight: normal;
-    padding-right: 25px;
+    padding-right: 30px;
 }
 
 #lbl1 {
@@ -59,7 +59,7 @@ h1 {
 }
 
 #lbl2 {
-    padding-right: 32px; 
+    padding-right: 37px; 
 }
 
 /* Format the instruction labels of the form. */
