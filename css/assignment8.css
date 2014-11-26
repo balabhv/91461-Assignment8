@@ -3,7 +3,7 @@
   Email: Virinchi_Balabhadrapatruni@student.uml.edu                            
   UMass Lowell Computer Science, 91.461 GUI Programming I                      
   Date: 10/17/2014                                                               
-  Description: CSS File created for Assignment #6.                               
+  Description: CSS File created for Assignment #8.                               
 */
 
 /* Add a background color, background image, and set the page's font. */
@@ -31,6 +31,10 @@ h1 {
     font-size: 25px;
 }
 
+#inputform {
+    border: none;
+}
+
 /* Format the input fields. */
 
 .numeric {
@@ -51,15 +55,15 @@ h1 {
 .fieldlbl2 {
     display: inline;
     font-weight: normal;
-    padding-right: 30px;
+    padding-right: 36px;
 }
 
 #lbl1 {
-    padding-right: 12px; 
+    padding-right: 13px; 
 }
 
 #lbl2 {
-    padding-right: 37px; 
+    padding-right: 45px; 
 }
 
 /* Format the instruction labels of the form. */
@@ -141,16 +145,10 @@ h1 {
     border-bottom: 0px;
 }
 
-/* Format the entire output div, as well as the div that contains all error messages. */
+/* Format the entire output div. */
 
-#formoutput_inner, #errordiv {
+#formoutput_inner {
     border: 0px;
-}
-
-/* This changes the border of the input fields to red when the input is invalid. */
-
-.numeric:invalid {
-    border: 2px solid red;
 }
 
 /* This formats the submit button. */
@@ -193,11 +191,32 @@ a:hover {
     color: #9900FF;
 }
 
-/* This formats the dynamically created error divs. */
-.error {
-    background-color: lightsalmon;
-    color: #cd0a0a;
+#tabs { margin-top: 1em; }
+#tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+
+input.error, select.error, textarea.error {
+    border: 1px red solid;
+    background-color: #E8AFAF;
+}
+
+div.error {
+    color: #F00;
     font-weight: bold;
-    border: 2px solid red;
+    border: none;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    margin-left: -5px;
+}
+
+.ui-tabs .ui-tabs-panel {
+    background-color: lightgray;
+}
+
+#frm, #edit {
+    border: none;
+}
+
+#delete {
+    margin-top: 5px;
 }
 

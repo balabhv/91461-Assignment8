@@ -2,129 +2,134 @@
  * Name: Virinchi Balabhadrapatruni                                             
  * Email: Virinchi_Balabhadrapatruni@student.uml.edu                            
  * UMass Lowell Computer Science, 91.461 GUI Programming I                      
- * Date: 10/17/2014                                                               
- * Description: Javascript File created for Assignment #6.
+ * Date: 11/14/2014                                                               
+ * Description: Javascript File created for Assignment #8.
  */
 
-function makeTable(form) {
-    var outputWrapper = document.getElementById('formoutput');
-    while (outputWrapper.firstChild) {
-        outputWrapper.removeChild(outputWrapper.firstChild);
-    }
+var tabCounter = 3;
 
-    // Check to see whether any of the textboxes is empty.
-    var a = form.firstInput.value;
-    var b = form.secondInput.value;
-    var c = form.thirdInput.value;
-    var d = form.fourthInput.value;
-
-
-    // This method prevents the logical operators from short-circuiting
-    var valid = !!(a != null);
-    valid = !!(a != '') && valid;
-    valid = !!(b != null) && valid;
-    valid = !!(b != '') && valid;
-    valid = !!(c != null) && valid;
-    valid = !!(c != '') && valid;
-    valid = !!(d != null) && valid;
-    valid = !!(d != '') && valid;
-
-    // Check to see if any of the inputs have decimal points in them.
-    var areIntegers = !!(a.indexOf('.') == -1);
-    areIntegers = !!(b.indexOf('.') == -1) && areIntegers;
-    areIntegers = !!(c.indexOf('.') == -1) && areIntegers;
-    areIntegers = !!(d.indexOf('.') == -1) && areIntegers;
+$(function () {
+    var tabs = $("#tabs").tabs();
+    var tabTitle = 'Generated Table #:\t' + (tabCounter - 2),
+            tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>";
+    console.log('TabCounter initial value: ' + tabCounter);
     
-    //Remove all existing error messages, and create a placeholder for an error.
-    var input = document.getElementById('errordiv');
+    //custom validation method for checking whether the start value is less than or equal to the end value.
+    // validation is done when the end value is entered
+    $.validator.addMethod('greaterThanOrEqualTo', function (value, element, param) {
+        if (this.optional(element))
+            return true;
+        var i = parseInt(value);
+        var j = parseInt($(param).val());
+        console.log('i = ' + i + ', j = ' + j);
+        return i >= j;
+    }, "");
 
-    var error = document.getElementsByClassName('error')[0];
-    while (input.firstChild) {
-        input.removeChild(input.firstChild);
-    }
-    error = document.createElement('div');
-    error.setAttribute('class', 'error');
+    //Advanced validation using the jQuery Validation Plugin
+    $('#inputformtag').validate({
+        // jQuery Valiation Plugin Rules
+        rules: {
+            colStart: {
+                required: true,
+                number: true
+            },
+            colEnd: {
+                required: true,
+                number: true,
+                greaterThanOrEqualTo: "#firstInput"
+            },
+            rowStart: {
+                required: true,
+                number: true
+            },
+            rowEnd: {
+                required: true,
+                number: true,
+                greaterThanOrEqualTo: "#thirdInput"
+            }
+        },
+        // error messages
+        messages: {
+            colStart: {
+                required: 'Please enter a column start value.',
+                number: 'This value is not an integer.'
+            },
+            colEnd: {
+                required: 'Please enter a column end value.',
+                number: 'This value is not an integer.',
+                greaterThanOrEqualTo: 'The column start must be less than or equal to the column end.'
+            },
+            rowStart: {
+                required: 'Please enter a row start value.',
+                number: 'This value is not an integer.'
+            },
+            rowEnd: {
+                required: 'Please enter a row end value.',
+                number: 'This value is not an integer.',
+                greaterThanOrEqualTo: 'The row start must be less than or equal to the row end.'
+            }
+        },
+        // place errors in a div on the next line - allows for longer error messages
+        errorElement: 'div',
+        // wubmit button click function
+        submitHandler: function (form) {
+            // get the input values.
+            var a = $("#firstInput").val();
+            var b = $("#secondInput").val();
+            var c = $("#thirdInput").val();
+            var d = $("#fourthInput").val();
 
 
-    // if one or more of the inputs is empty
-    if (!valid) {
+            // get the four values as integers
+            var horizStart = parseInt(a);
+            var horizEnd = parseInt(b);
+            var vertStart = parseInt(c);
+            var vertEnd = parseInt(d);
 
-        error.innerHTML = 'Please fill in all required fields.';
-        input.appendChild(error);
-        $(".error").fadeOut(100).fadeIn('slow');
-        if (a == null || a == '') {
-            form.firstInput.setCustomValidity('Invalid');
-        }
-        if (b == null || b == '') {
-            form.secondInput.setCustomValidity('Invalid');
-        }
-        if (c == null || c == '') {
-            form.thirdInput.setCustomValidity('Invalid');
-        }
-        if (d == null || d == '') {
-            form.fourthInput.setCustomValidity('Invalid');
-        }
-    } else if (!areIntegers) {
-        // if one or more of the inputs are not integers
-        error.innerHTML = "All inputs must be integer values.";
-        input.appendChild(error);
-        $(".error").fadeOut(100).fadeIn('slow');
-        if (!!(a.indexOf('.') > -1)) {
-            form.firstInput.setCustomValidity('Not an integer');
-        }
-        if (!!(b.indexOf('.') > -1)) {
-            form.secondInput.setCustomValidity('Not an integer');
-        }
-        if (!!(c.indexOf('.') > -1)) {
-            form.thirdInput.setCustomValidity('Not an integer');
-        }
-        if (!!(d.indexOf('.') > -1)) {
-            form.fourthInput.setCustomValidity('Not an integer');
-        }
-    } else {
-        //valid input
-        form.firstInput.setCustomValidity('');
-        form.secondInput.setCustomValidity('');
-        form.thirdInput.setCustomValidity('');
-        form.fourthInput.setCustomValidity('');
+            //print them to the developer console
+            console.log('Horizontal Start: ' + horizStart);
+            console.log('Horizontal End: ' + horizEnd);
+            console.log('Vertical Start: ' + vertStart);
+            console.log('Vertical End: ' + vertEnd);
 
 
-        // get the four values as integers
-        var horizStart = parseInt(form.firstInput.value);
-        var horizEnd = parseInt(form.secondInput.value);
-        var vertStart = parseInt(form.thirdInput.value);
-        var vertEnd = parseInt(form.fourthInput.value);
-
-        //print them to the developer console
-        console.log('Horizontal Start: ' + horizStart);
-        console.log('Horizontal End: ' + horizEnd);
-        console.log('Vertical Start: ' + vertStart);
-        console.log('Vertical End: ' + vertEnd);
-
-        //Check if the start is less than or equal to the end.
-        //Again, this method is used to prevent short-circuiting.
-        var valid2 = !!(horizStart <= horizEnd);
-        valid2 = !!(vertStart <= vertEnd) && valid2;
-        if (valid2) {
             //create the wrapper div for the table
             var outputDiv = document.createElement("div");
             outputDiv.setAttribute("id", "formoutput_inner");
             var outputTitle = document.createElement("h1");
-            outputTitle.innerHTML = 'Form Output: ';
-            outputWrapper.appendChild(outputTitle);
-            
+            outputTitle.innerHTML = 'Form Inputs: ';
+            var cs = document.createElement("h2"),
+                    ce = document.createElement("h2"),
+                    rs = document.createElement("h2"),
+                    re = document.createElement("h2");
+            cs.innerHTML = 'Column Start: ' + horizStart;
+            ce.innerHTML = 'Column End: ' + horizEnd;
+            rs.innerHTML = 'Row Start: ' + vertStart;
+            re.innerHTML = 'Row End: ' + vertEnd;
+            var inDiv = document.createElement('div');
+            inDiv.appendChild(cs);
+            inDiv.appendChild(ce);
+            inDiv.appendChild(rs);
+            inDiv.appendChild(re);
+            outputDiv.appendChild(outputTitle);
+            outputDiv.appendChild(inDiv);
+            var outputTitle2 = document.createElement("h1");
+            outputTitle2.innerHTML = 'Form Output: ';
+            outputDiv.appendChild(outputTitle2);
+
+
             // create the table
             var table = document.createElement("table");
-            
+
             // create the first row (headers)
             var headerRow = document.createElement('tr');
-            
+
             //create an empty header element, as the table;s top left corner cell should be empty
             var th = document.createElement('th');
             th.setAttribute('id', 'emptyheader');
             th.innerHTML = '';
             headerRow.appendChild(th);
-            
+
             // for each value between the horizontal start and end,
             // create a header and add it to the row.
             for (var i = horizStart; i <= horizEnd; ++i) {
@@ -137,38 +142,62 @@ function makeTable(form) {
                 headerRow.appendChild(th);
             }
             table.appendChild(headerRow);
-            
+
             //for each value between the vertical start and end,
             // create a row and add it to the table.
             for (var i = vertStart; i <= vertEnd; ++i) {
-                
+
                 //given the horizontal start, horizontal end, the current row, and the maximum row number,
                 // create a row in the table
                 var tablerow = generateTableRow(horizStart, horizEnd, i, vertEnd);
                 table.appendChild(tablerow);
             }
 
-            // add the table to the page
             outputDiv.appendChild(table);
-            outputWrapper.appendChild(outputDiv);
-            outputWrapper.appendChild(document.createElement('br'));
-        } else {
-            error.innerHTML = 'Invalid input: Start is greater than end.';
-            input.appendChild(error);
-            $(".error").fadeOut(100).fadeIn('slow');
+            addTab(tabTitle, tabCounter, tabTemplate, tabs, outputDiv);
+            tabCounter++;
+            tabTitle = 'Generated Table #:\t' + (tabCounter - 2)
+            $('#tabs').tabs('load', 1);
+            $(form).submit(function (event) {
+                event.preventDefault();
+            });
 
         }
+    });
 
-    }
+    // close icon: removing the tab on click
+    tabs.delegate("span.ui-icon-close", "click", function () {
+        var panelId = $(this).closest("li").remove().attr("aria-controls");
+        $("#" + panelId).remove();
+        tabs.tabs("refresh");
+    });
+});
+
+
+
+// actual addTab function: adds new tab using the input from the form above
+function addTab(tabTitle, tabCounter, tabTemplate, tabs, outputDiv) {
+    console.log('enter addtab: TabCounter value: ' + tabCounter);
+    var label = tabTitle || "Tab " + tabCounter,
+            id = "tabs-" + tabCounter,
+            li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
+    var tabDiv = document.createElement('div');
+    tabDiv.setAttribute('id', id);
+    tabDiv.appendChild(outputDiv);
+    var tabContentHtml = $(tabDiv);
+    tabs.find(".ui-tabs-nav").append(li);
+    tabs.append(tabContentHtml);
+    tabs.tabs("refresh");
+    console.log('exit addtab: TabCounter value: ' + tabCounter);
 }
 
 function generateTableRow(horizStart, horizEnd, vert, vertEnd) {
     // create the table row
     var tr = document.createElement('tr');
-    
+
     // create the table header
     var th = document.createElement('th');
-    
+
     // if the current row is the last row, add an id.
     // The bottom most header should not have a bottom border
     if (vert === vertEnd) {
