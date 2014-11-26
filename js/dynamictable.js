@@ -27,8 +27,6 @@ $(function () {
 
     //Advanced validation using the jQuery Validation Plugin
     $('#inputformtag').validate({
-        onfocusout: true,
-        onkeyup: true,
         // jQuery Valiation Plugin Rules
         rules: {
             colStart: {
