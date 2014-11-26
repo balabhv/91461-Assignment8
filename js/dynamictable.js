@@ -21,7 +21,10 @@ $(function () {
             return true;
         var i = parseInt(value);
         var j = parseInt($(param).val());
-        if (isNaN(i) || isNaN(j)) {
+        if (isNaN(i)) {
+            return true;
+        }
+        if (isNaN(j)) {
             return true;
         }
         console.log('i = ' + i + ', j = ' + j);
