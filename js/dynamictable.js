@@ -34,18 +34,18 @@ $(function () {
                 number: true
             },
             colEnd: {
-                required: true,
                 number: true,
-                greaterThanOrEqualTo: "#firstInput"
+                greaterThanOrEqualTo: "#firstInput",
+                required: true
             },
             rowStart: {
                 required: true,
                 number: true
             },
             rowEnd: {
-                required: true,
                 number: true,
-                greaterThanOrEqualTo: "#thirdInput"
+                greaterThanOrEqualTo: "#thirdInput",
+                required: true
             }
         },
         // error messages
